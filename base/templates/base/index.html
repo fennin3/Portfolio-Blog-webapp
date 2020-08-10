@@ -1,0 +1,162 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% block title %}
+Home - RenninTech
+{% endblock title %}
+
+{% block content %}
+
+	<section class="s1">
+		<div class="main-container">
+			
+
+
+			<div class="intro-wrapper m-3 shadow-lg">
+				
+
+				<div class="left-column">
+					<div class="row">
+						<div class="col-sm-5 mb-2">
+							<img id="profile_pic" src="{% static 'images/pic.jpeg' %}" class="mb-4">
+							<h5 style="text-align: center;line-height: 0;" class="mt-1">Ennin Francis</h5>
+						</div>
+						<div class="col-sm-5">
+							<img id="profile_pic" src="{% static 'images/ran.jpg' %}" class="mb-4">
+							<h5 style="text-align: center;line-height: 0;" class="mt-1">Aduhene Randy</h5>
+						</div>
+						{% comment %} <img id="profile_pic" src="{% static 'images/pic.jpeg' %}" class="mb-4">
+						<h5 style="text-align: center;line-height: 0;" class="mt-1">Ennin Francis</h5> {% endcomment %}
+					</div>
+				</div>
+
+				<div class="right-column">
+
+					<div id="preview-shadow">
+						<div id="preview">
+							<div id="corner-tl" class="corner"></div>
+							<div id="corner-tr" class="corner"></div>
+							<h3>What We Do</h3>
+							<p>We provide Tech support! <br><br>We help you increase your Tech knowledge!<br><br>We help you build your projects!</p>
+							<div id="corner-br" class="corner"></div>
+							<div id="corner-bl" class="corner"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="s2">
+		<div class="main-container">
+
+			<div class="about-wrapper">
+				<div class="about-me">
+					<a id="aboutus"></a>
+					<h4>More about Us</h4>
+
+					<p>RenninTech is a team of two: Ennin Francis and Randy Aduhene. We are second year computer engineering students that have passion for programming and everything tech! Teaching, writing guides and building projects are our favorite past-time and allow for us to reinforce our learning while providing value to all of our supporters. As we learn and develop our programming skills we will be sharing all our knowledge on this site and on our <a href="https://www.youtube.com/channel/UCSAZbdwIf2ZrgoKGM224S_w?view_as=subscriber" target="_blank">channel</a>  completely for FREE! </p>
+
+					<p>We are also interested in helping you build your project, so do not hesitate to reach out to us.</p>
+
+
+					<hr>
+
+					<h4>OUR SKILLS</h4>
+
+					<p>We are proficient in the technologies below:
+					<div class="container">
+						<div class="row">
+						{% for skill in skills %}
+							<div class="col-sm shadow rounded m-2" style="background-color: #eaeaea">
+								<ul>
+									<li><strong><em>{{skill.title}}</em></strong></li>
+									{% for list in skill.skills.all %}
+										<li>{{list}}</li>
+									{% endfor %}
+									
+									
+								</ul>
+							</div>
+						{% endfor %}
+							
+						
+						</div>
+					</div>
+					
+ 
+			</div>
+
+		</div>
+	</section>
+
+	<section class="s1">
+		<div class="main-container">
+			<h3 style="text-align: center;" class="mt-3 mb-2">Recent Blogs</h3>
+
+			<div class="post-wrapper">
+				{% for post in posts %}
+				<div>
+					<div class="post">
+						<img class="thumbnail" src="{{post.thumbnail.url}}">
+						<div class="post-preview">
+							<h6 class="post-title">{{post.headline}}</h6>
+							<p class="post-intro">{{post.sub_headline}}</p>
+							<a href="{%  url 'post' post.slug %}">Read More</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+
+			<p style="text-align:center;">
+				<a href="{% url 'posts' %}">View More</a>
+			</p>
+		</div>
+	</section>
+
+	<section class="s2 pt-4">
+		<div class="main-container">
+			<a href=""></a>
+			<h3 style="text-align: center;">Get In Touch</h3>
+
+			<form id="contact-form" method="POST" action="{% url 'send_email' %}" class="shadow">
+				{% csrf_token %}
+				<a name="contact"></a>
+
+				<label>Name</label>
+				<input required class="input-field" type="text" name="name">
+
+				<label>Subject</label>
+				<input required class="input-field" type="text" name="subject">
+
+				<label>Email</label>
+				<input required class="input-field" type="text" name="email">
+
+				<label>Message</label>
+				<textarea required class="input-field" name="message"></textarea>
+
+				<input id="submit-btn" type="submit" value="Send">
+			</form>
+
+		</div>
+		<div class="main-container">
+			<a href=""></a>
+			<h3 style="text-align: center;">Subscribe</h3>
+
+			<form id="contact-form" method="POST" action="{% url 'subscribe' %}" class="shadow">
+				{% csrf_token %}
+				<a name="contact"></a>
+
+				<label>Email</label>
+				<input required class="input-field" type="text" name="email2">
+
+				<input id="submit-btn" type="submit" value="Send">
+			</form>
+			
+		</div>
+	</section> 
+	
+		
+
+{% endblock content %}
