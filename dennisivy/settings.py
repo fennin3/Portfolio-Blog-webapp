@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'storages',
 
-    'embed_video',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
