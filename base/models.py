@@ -2,7 +2,6 @@ from django.db import models
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
-from embed_video.fields import EmbedVideoField
 
 # Create your models here.
 
@@ -45,7 +44,7 @@ class Post(models.Model):
 
 class Port_Project(models.Model):
 	title = models.CharField(max_length=100)
-	video = EmbedVideoField()
+	video = models.URLField()
 	description = models.TextField()
 
 	def __str__(self):
