@@ -121,8 +121,10 @@ def sendEmail(request):
 
 def porfolio_page(request, slug):
 	port = Portfolio.objects.get(slug=slug)
+	port_len = len(port)
 	context = {
 		'portfolio':port
+		'port_len':port_len
 	}
 	return render(request, 'base/portfolio_page.html', context)
 
