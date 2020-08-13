@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
+
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -147,7 +149,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -178,3 +180,5 @@ AWS_QUERYSTRING_AUTH = False
 
 #AWS_S3_FILE_OVERWRITE = False
 #AWS_DEFAULT_ACL = None
+
+django_heroku.settings(locals())
