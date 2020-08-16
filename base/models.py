@@ -22,6 +22,7 @@ class Post(models.Model):
 	featured = models.BooleanField(default=False)
 	tags = models.ManyToManyField(Tag)
 	slug = models.SlugField(null=True, blank=True)
+	youtube_video = models.URLField(null=True, blank=True)
 
 	def __str__(self):
 		return self.headline
