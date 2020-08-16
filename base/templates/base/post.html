@@ -35,12 +35,12 @@
 	{% endfor %}
 	<hr>
 
-	<h2>{{post.headline}}</h2>
-	<h5>{{post.sub_headline}}</h5>
-	<iframe width="90%" height="345" src="{{post.youtube_video}}">
+	<h3>{{post.headline}}</h3>
+	<h6 class="mb-3">{{post.sub_headline}}</h6>
+	<iframe width="100%" height="345" src="{{post.youtube_video}}">
 	</iframe>
 	<p>{{post.body|safe}}</p>
-	<p><a href="{% url 'posts' %}">Check out other blogs....</a></p>
+	<p class="mt-3"><a href="{% url 'posts' %}">Check out other blogs....</a></p>
 </div>
 
 {% endblock content %}
