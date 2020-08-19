@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{% static 'css2/jquery.fancybox.min.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/line-icons/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="{% static 'css2/style.css' %}">    
@@ -77,6 +76,12 @@
               <li><a href="{% url 'posts' %}">Blog</a></li>
               <li><a href="">About</a></li>
               <li><a href="{% url 'contact_us' %}">Contact</a></li>
+              {% if request.user.is_authenticated %}
+              <li >
+                <a href="{% url 'create_post' %}">Create Post</a>
+              </li>
+              {% endif %}
+				
             </ul>
           </nav>
           
@@ -112,7 +117,7 @@
         <img src="{% static 'images/RenninTech.png' %}" style="width: 60%; display: block; margin-left: auto; margin-right: auto;">
       </div>
 
-      <a href="" class="scroll-button smoothscroll">
+      <a href="#down" class="scroll-button smoothscroll">
         <span class=" icon-keyboard_arrow_down"></span>
       </a>
 
@@ -137,7 +142,7 @@
 
 
 
-    <footer class="site-footer slanted-footer">
+    <footer class="site-footer slanted-footer" id="down">
 
       <a href="#top" class="smoothscroll scroll-top">
         <span class="icon-keyboard_arrow_up"></span>
@@ -174,7 +179,7 @@
       </div>
     </footer>
   
-  </div>
+
 
     <!-- SCRIPTS -->
     <script src="{% static 'js2/jquery.min.js' %}"></script>

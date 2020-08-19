@@ -15,14 +15,16 @@ from .models import Post, Portfolio, SkillCat, EmailList
 # Create your views here.
 
 def home(request):
-	re = Post.objects.filter(active=True, featured=True)[0:3]
+	re = Post.objects.filter(active=True, featured=True)[0:4]
 	posts = reversed(list(re))
 	results = SkillCat.objects.all()
-	skills = reversed(list(results))	
+	skills = reversed(list(results))
+	portfolios = Portfolio.objects.all()	
 
 	context = {
 		'posts':posts,
-		'skills':skills
+		'skills':skills,
+		'portfolios':portfolios
 	}
 
 	return render(request, 'base/index1.html', context)

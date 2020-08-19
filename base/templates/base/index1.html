@@ -88,9 +88,12 @@ Home
         <div class="row justify-content-center mb-5" data-aos="fade-up">
           <div id="filters" class="filters text-center button-group col-md-7">
             <button class="btn btn-primary active" data-filter="*">All</button>
-            <button class="btn btn-primary" data-filter=".web">Web</button>
-            <button class="btn btn-primary" data-filter=".design">Design</button>
-            <button class="btn btn-primary" data-filter=".brand">Brand</button>
+            {% for port in portfolios %}
+              <button class="btn btn-primary" data-filter=".web">{{port.name}}</button>
+            {% endfor %}
+            
+            {% comment %} <button class="btn btn-primary" data-filter=".design">Design</button>
+            <button class="btn btn-primary" data-filter=".brand">Brand</button> {% endcomment %}
           </div>
         </div>  
         
@@ -133,7 +136,7 @@ Home
         <div class="row">
           {% for post in posts %}
           <div class="col-md-6 col-lg-6 mb-4">
-            <div class="block__86547 d-block d-xl-flex align-items-stretch">
+            <div class="block__86547 d-block d-xl-flex align-items-stretch shadow">
               <figure class="img" style="background-image: url('{{post.thumbnail.url}}')">
               </figure>
               <div class="h-100">
