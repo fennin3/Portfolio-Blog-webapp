@@ -25,7 +25,7 @@ def home(request):
 		'skills':skills
 	}
 
-	return render(request, 'base/index1.html', context)
+	return render(request, 'base/index.html', context)
 
 def posts(request):
 	posts = Post.objects.filter(active=True)
