@@ -137,7 +137,7 @@ Home
           {% for post in posts %}
           <div class="col-md-6 col-lg-6 mb-4">
             <div class="block__86547 d-block d-xl-flex align-items-stretch shadow">
-              <figure class="img" style="background-image: url('{{post.thumbnail.url}}'); background-size: contain;">
+              <figure class="img" style="background-image: url('{{post.thumbnail.url}}')">
               </figure>
               <div class="h-100">
                 <h3 class="mb-1"><a href="{%  url 'post' post.slug %}">{{post.headline}}</a></h3>
