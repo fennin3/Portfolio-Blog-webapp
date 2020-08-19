@@ -131,12 +131,23 @@ Home
             <h2 class="section-title mb-3">Blog Posts</h2>
           </div>
         </div>
-          {% for post in in posts %}
-            <div class="col-lg-4 col-md-6 col-sm-12 shadow">
-              <img src="{{post.thumbnail.url}}">
+          {% for post in posts %}
+          <div class="col-md-6 col-lg-6 mb-4">
+            <div class="block__86547 d-block d-xl-flex align-items-stretch">
+              <figure class="img" style="background-image: url('{{post.thumbnail.url}}')">
+              </figure>
+              <div class="h-100">
+                <h3 class="mb-1"><a href="{%  url 'post' post.slug %}">{{post.headline}}</a></h3>
+                <p class="mb-4"><a href="{%  url 'post' post.slug %}">{{post.sub_headline}}</a></p>
+                <div class="block__27192 d-flex pt-1 border-top">
+                  {% comment %} <a href="#"><span class="icon-person"></span> Jacob Smith</a> {% endcomment %}
+                  <a href="#"><span class="icon-calendar-o"></span> {{ post.created}}</a>
+                  {% comment %} <a href="#"><span class="icon-chat"></span> 2</a> {% endcomment %}
+                </div>
+              </div>
             </div>
+          </div>
           {% endfor %}
-          
           
         </div>
       </div>
