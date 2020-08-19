@@ -15,4 +15,5 @@ urlpatterns = [
 	path('portfolio/<slug:slug>/', views.porfolio_page, name="portfolio_page"),
 	path('subscribe', views.subscribe, name="subscribe"),
 	path('send_email/', views.sendEmail, name="send_email"),
+	path('contact-us/', views.contact, name="contact_us"),
 ]

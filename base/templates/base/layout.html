@@ -1,0 +1,192 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title> {% block title %}
+    
+    {% endblock title %} &mdash; Rennintech</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="{% static 'css2/custom-bs.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css2/jquery.fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/line-icons/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="{% static 'css2/style.css' %}">    
+  </head>
+  <body>
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+    
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    
+
+    <!-- NAVBAR -->
+    <header class="site-navbar mt-3" id="top">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="site-logo col-6"><a href="{% url 'home' %}">RenninTech</a></div>
+
+
+          
+
+          <nav class="mx-auto site-navigation">
+            <ul class="site-menu js-clone-nav d-none d-lg-block">
+              <li><a href="{% url 'home' %}" class="nav-link active">Home</a></li>
+              
+                {% comment %} <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: black">
+					Portfolio
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					{% for port in portfolios %}
+						
+						<a class="dropdown-item" href="{% url 'portfolio_page' port.slug %}">{{port.name}}</a>
+						<div class="dropdown-divider"></div>
+					{% endfor %}
+				</li> {% endcomment %}
+               <li class="has-children">
+                <a href="">Portfolio</a>
+                <ul class="dropdown">
+                  
+                  {% for port in portfolios %}
+                    <li><a href="">{{port.name}}</a></li>
+                    <hr>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li><a href="{% url 'posts' %}">Blog</a></li>
+              <li><a href="">About</a></li>
+              <li><a href="{% url 'contact_us' %}">Contact</a></li>
+            </ul>
+          </nav>
+          
+          <div class="col-6 site-burger-menu d-block d-lg-none text-right">
+            <a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu h3"></span></a>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- HOME -->
+    <section class="home-section section-hero overlay slanted" id="home-section">
+
+      <div class="container">
+      <div class="row align-items-center justify-content-center">
+          <div class="col-md-8 text-center">
+            {% block info %}
+            
+        {% endblock info %}
+            
+          </div>
+        </div>
+      
+        
+      </div>
+        
+      <!-- VIDEO -->
+      <div class="video-container">
+        {% comment %} <video autoplay loop="true">
+          <source type="video/mp4" src="{% static 'videos/video.mp4' %}">
+        </video> {% endcomment %}
+        <img src="{% static 'images/RenninTech.png' %}" style="width: 60%; display: block; margin-left: auto; margin-right: auto;">
+      </div>
+
+      <a href="" class="scroll-button smoothscroll">
+        <span class=" icon-keyboard_arrow_down"></span>
+      </a>
+
+    </section>
+
+
+
+
+
+
+
+{% block content %}
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+    <footer class="site-footer slanted-footer">
+
+      <a href="#top" class="smoothscroll scroll-top">
+        <span class="icon-keyboard_arrow_up"></span>
+      </a>
+
+      <div class="container">
+        
+
+        <div class="row text-center">
+          <div class="col-12">
+            <h3>Contact Us</h3>
+            <div class="footer-social">
+              <a href="#"><span class="icon-facebook"></span></a>
+              <a href="#"><span class="icon-twitter"></span></a>
+              <a href="#"><span class="icon-instagram"></span></a>
+              <a href="https://www.youtube.com/channel/UCSAZbdwIf2ZrgoKGM224S_w?view_as=subscriber" target="_blank"><span class="icon-youtube"></span></a>
+            </div>
+          </div>
+        </div>
+                    
+          <div class="col-12 col-md-12">
+            
+          </div>
+
+        <div class="row text-center">
+          <div class="col-12">
+            <p class="copyright"><small class="block">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | RenninTech
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </small></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+  </div>
+
+    <!-- SCRIPTS -->
+    <script src="{% static 'js2/jquery.min.js' %}"></script>
+    <script src="{% static 'js2/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js2/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js2/stickyfill.min.js' %}"></script>
+    <script src="{% static 'js2/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'js2/jquery.easing.1.3.js' %}"></script>
+    
+    <script src="{% static 'js2/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'js2/jquery.animateNumber.min.js' %}"></script>
+    
+    <script src="{% static 'js2/custom.js' %}"></script>
+  </body>
+</html>

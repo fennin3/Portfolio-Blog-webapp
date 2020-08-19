@@ -28,7 +28,7 @@ SECRET_KEY = 'hrj48*mobkzo)s6q+2wfqcg=_=@5c38n&sb4_vlp#bb^zyp_pi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'rennintech.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'rennintech.herokuapp.com', 'rennintech.com']
 
 
 # Application definition
@@ -103,7 +103,7 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 
-
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -180,6 +180,8 @@ CKEDITOR_CONFIGS = {
 #AWS_S3_FILE_OVERWRITE = False
 #AWS_DEFAULT_ACL = None
 #S3 BUCKETS CONFIG
+
+AWS_QUERYSTRING_AUTH = False
 
 AWS_ACCESS_KEY_ID = 'AKIA3IFWRAQDX3LETUMO'
 AWS_SECRET_ACCESS_KEY = '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'

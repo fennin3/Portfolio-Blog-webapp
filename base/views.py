@@ -25,7 +25,7 @@ def home(request):
 		'skills':skills
 	}
 
-	return render(request, 'base/index.html', context)
+	return render(request, 'base/index1.html', context)
 
 def posts(request):
 	posts = Post.objects.filter(active=True)
@@ -135,3 +135,7 @@ def subscribe(request):
 		form = EmailList(email=request.POST['email2'])
 		form.save()
 		return redirect('home')
+
+
+def contact(request):
+    return render(request, 'base/contact.html')

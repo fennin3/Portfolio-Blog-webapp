@@ -1,0 +1,157 @@
+{% extends "base/layout.html" %}
+{% load static %}
+{% block title %}
+Home
+{% endblock title %}
+    {% block info %}
+    
+        <h1 style="font-size: 20px; font-weight: bolder;">Sharing tech Knowledge and providing solutions to tech problems.</h1>
+            <div class="mx-auto w-75">
+              <p></p>
+            </div>
+            <p class="mt-5"><a href="{% url 'contact_us' %}" class="btn btn-outline-white btn-md ">Get in touch</a></p>
+    {% endblock info %}
+    {% block content %}
+    <!-- ABOUT US -->
+    <section class="site-section about-us-section" id="">
+      <div class="container">
+        
+        <div class="row pt-0 ">
+          <div class="col-md-6 align-self-center">
+            <h3 class="section-title-sub text-primary">About Us</h3>
+            <h2 class="section-title mb-4">Who Are You Guys</h2>
+            <p style="font-size: 18px">RenninTech is a team of two: Ennin Francis and Randy Aduhene. We are second year computer engineering students that have passion for programming and everything tech! Teaching, writing guides and building projects are our favorite past-time and allow for us to reinforce our learning while providing value to all of our supporters. As we learn and develop our programming skills we will be sharing all our knowledge on this site and on our <a href="https://www.youtube.com/channel/UCSAZbdwIf2ZrgoKGM224S_w?view_as=subscriber" target="_blank">channel</a>  completely for FREE! </p>
+
+				  	<p style="font-size: 18px">We are also interested in helping you build your project, so do not hesitate to reach out to us.</p>
+            <p class="mt-4"><a href="#" class="spepcial_link">Read more about us</a></p>
+          </div>
+          <div class="col-md-5 ml-auto img-overlap">
+            <div class="img-1"><img src="{% static 'images/pic.jpeg' %}" alt="Image" class="img-fluid img-shadow"></div>
+            <div class="img-2"><img src="{% static 'images/ran.jpg' %}" alt="Image" class="img-fluid img-shadow"></div> 
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="bg-light block__62849" >
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center mt-2" data-aos="fade">
+            <h2 class=" mb-3">Our Skills</h2>
+          </div>
+        </div>
+        <div class="row">
+        {% for skill in skills %}
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-4 mb-lg-5">
+
+            <div class="shadow" style="text-align: center;">
+              <strong><em>{{skill.title}}</em></strong>
+              <ul style="list-style: none;">
+              {% for list in skill.skills.all %}
+									<li>{{list}}</li>
+							{% endfor %} 
+              </ul>
+            </div>
+
+
+          </div>
+        {% endfor %}
+          
+          {% comment %} <div class="col-sm-12 col-md-6 col-lg-4 mb-4 mb-lg-5">
+
+            <div class="shadow">
+              card
+            </div>
+
+          </div> {% endcomment %}
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+
+    <section class="site-section block__62272" id="portfolio-section">
+      
+
+      <div class="container">
+
+        <div class="row mb-3">
+          <div class="col-12 text-center" data-aos="fade">
+            {% comment %} <h3 class="section-title-sub text-primary">Awesome Works</h3> {% endcomment %}
+            <h2 class="section-title mb-3">Portfolio</h2>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-5" data-aos="fade-up">
+          <div id="filters" class="filters text-center button-group col-md-7">
+            <button class="btn btn-primary active" data-filter="*">All</button>
+            <button class="btn btn-primary" data-filter=".web">Web</button>
+            <button class="btn btn-primary" data-filter=".design">Design</button>
+            <button class="btn btn-primary" data-filter=".brand">Brand</button>
+          </div>
+        </div>  
+        
+        <div id="posts" class="row no-gutter">
+          <div class="item web col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+            <a href="" class="item-wrap">
+              <span class="icon-add"></span>
+              <img class="img-fluid" src="{% static 'images/sq_img_1.jpg' %}">
+            </a>
+          </div>
+         
+
+          <div class="item brand col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+            <a href="" class="item-wrap">
+              <span class="icon-add"></span>
+              <img class="img-fluid" src="{% static 'images/sq_img_3.jpg' %}">
+            </a>
+          </div>
+
+          <div class="item design col-6 col-sm-6 col-md-6 col-lg-4 col-xl-4 mb-4">
+
+            <a href="" class="item-wrap">
+              <span class="icon-add"></span>
+              <img class="img-fluid" src="{% static 'images/sq_img_4.jpg' %}">
+            </a>
+
+          </div>
+
+      </div>
+
+   
+
+    <section class="site-section block__45439">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12 text-center" data-aos="fade">
+            <h3 class="section-title-sub text-primary">Read the latest post</h3>
+            <h2 class="section-title mb-3">Blog Posts</h2>
+          </div>
+        </div>
+          {% for post in posts %}
+          <div class="col-md-6 col-lg-6 mb-4">
+            <div class="block__86547 d-block d-xl-flex align-items-stretch">
+              <figure class="img" style="background-image: url('{{post.thumbnail.url}}')">
+              </figure>
+              <div class="h-100">
+                <h3 class="mb-1"><a href="{%  url 'post' post.slug %}">{{post.headline}}</a></h3>
+                <p class="mb-4"><a href="{%  url 'post' post.slug %}">{{post.sub_headline}}</a></p>
+                <div class="block__27192 d-flex pt-1 border-top">
+                  {% comment %} <a href="#"><span class="icon-person"></span> Jacob Smith</a> {% endcomment %}
+                  <a href="#"><span class="icon-calendar-o"></span> {{ post.created}}</a>
+                  {% comment %} <a href="#"><span class="icon-chat"></span> 2</a> {% endcomment %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          
+        </div>
+      </div>
+    </section> 
+
+    
+    {% endblock content %}
